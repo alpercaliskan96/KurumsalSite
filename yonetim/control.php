@@ -22,6 +22,7 @@ $yonetim->kontrolet("cot");
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">   
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -233,7 +234,7 @@ $yonetim->kontrolet("cot");
             //-----------------------
 
             default:
-            $yonetim->siteayar($baglanti);
+            $yonetim->istatistikbar($baglanti);
 
             //-----------------------
             case "tasarimtercihayar":
@@ -265,6 +266,8 @@ $yonetim->kontrolet("cot");
     <script src="assets/js/jquery.slicknav.min.js"></script> 
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    
+
 </body>
 
 </html>

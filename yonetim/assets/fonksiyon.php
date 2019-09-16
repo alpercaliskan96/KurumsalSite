@@ -598,7 +598,14 @@ session_start();
                 header("refresh:2,url=control.php?sayfa=introresimekle");
 
               else:
-                $dosyayol='../img/intro/'.$_FILES["dosya"]["name"];
+
+                $uzanti=explode(".",$_FILES["dosya"]["name"]);
+
+                $randdeger=md5(mt_rand(0,9995457));
+
+                $yeniisim = $randdeger.".".end($uzanti);
+
+                $dosyayol='../img/intro/'.$yeniisim;
                 
                 move_uploaded_file($_FILES["dosya"]["tmp_name"],$dosyayol); 
 
@@ -783,7 +790,7 @@ session_start();
               <input type="file" name="dosya">  
             </div>
 
-            <div class="col-lg-3 border-bottom bg-light pt-3" id="hakkimizdayazilarn">
+            <div class="col-lg-3 border-bottom bg-light pt-3" id="hakkimizdayazilar">
               Başlık
             </div>
 
@@ -795,10 +802,19 @@ session_start();
               İçerik
             </div>
 
-            <div class="col-lg-9">
-            <textarea name="content" class="form-control m-2" rows="6">'.$sonbilgi["content"].'</textarea>
-              
-            </div>
+            <div class="col-lg-9 mt-6">
+            <textarea name="content" class="form-control m-2" rows="8" id="editor1">'.$sonbilgi["content"].'</textarea>'; ?>
+
+            <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor1' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            </script>
+            
+            <?php
+            echo '</div>
 
             <div class="col-lg-12 border-top">
               <input type="submit" name="guncel" value="Güncelle" class="btn btn-dark m-2">
@@ -810,8 +826,8 @@ session_start();
 
           //form basıldıysa
         else:
-          $title=htmlspecialchars($_POST["title"]);
-          $content=htmlspecialchars($_POST["content"]);
+          $title=$_POST["title"];
+          $content=$_POST["content"];
 
           if(@$_FILES["dosya"]["name"]!="") :
           
@@ -917,7 +933,17 @@ session_start();
             Content
           </div>
           <div class="col-lg-12 border-top p-2">
-          <textarea name="content" rows="5" class="form-control"></textarea>
+          <textarea name="content" rows="5" class="form-control" id="editor3"></textarea>'; ?>
+
+          <script>
+            ClassicEditor
+              .create( document.querySelector('#editor3') )
+              .catch( error => {
+                  console.error(  error );
+              });
+          </script>
+          <?php
+          echo '
           </div>
 
           <div class="col-lg-12 border-top p-2">
@@ -932,7 +958,7 @@ session_start();
         else:
 
           $title=htmlspecialchars($_POST["title"]);
-          $content=htmlspecialchars($_POST["content"]);
+          $content=$_POST["content"];
 
           if($title=="" && $content=="") :
 
@@ -991,7 +1017,18 @@ session_start();
             Content
           </div>
           <div class="col-lg-12 border-top p-2">
-          <textarea name="content" rows="5" class="form-control">'.$kayitbilgi["content"].'</textarea>
+          <textarea name="content" rows="5" class="form-control" id="editor5">'.$kayitbilgi["content"].'</textarea>'; ?>
+
+          <script>
+          ClassicEditor
+              .create( document.querySelector( '#editor5' ) )
+              .catch( error => {
+                  console.error( error );
+              } );
+          </script>
+          
+          <?php
+          echo '
           </div>
 
           <div class="col-lg-12 border-top p-2">
@@ -1007,7 +1044,7 @@ session_start();
         else:
 
           $title=htmlspecialchars($_POST["title"]);
-          $content=htmlspecialchars($_POST["content"]);
+          $content=$_POST["content"];
           $kayitidsi=htmlspecialchars($_POST["kayitidsi"]);
 
           if($title=="" && $content=="") :
@@ -1121,7 +1158,14 @@ session_start();
                 header("refresh:2,url=control.php?sayfa=referans");
 
               else:
-                $dosyayol='../img/referanslar/'.$_FILES["dosya"]["name"];
+
+                $uzanti=explode(".",$_FILES["dosya"]["name"]);
+
+                $randdeger=md5(mt_rand(0,9995457));
+
+                $yeniisim = $randdeger.".".end($uzanti);
+
+                $dosyayol='../img/referanslar/'.$yeniisim;
                 
                 move_uploaded_file($_FILES["dosya"]["tmp_name"],$dosyayol); 
 
@@ -1258,7 +1302,18 @@ session_start();
             Content
           </div>
           <div class="col-lg-12 border-top p-2">
-          <textarea name="content" rows="5" class="form-control"></textarea>
+          <textarea name="content" rows="5" class="form-control" id="editor6"></textarea>'; ?>
+
+          <script>
+          ClassicEditor
+              .create( document.querySelector( '#editor6' ) )
+              .catch( error => {
+                  console.error( error );
+              } );
+          </script>
+          
+          <?php
+          echo '
           </div>
 
           <div class="col-lg-12 border-top p-2">
@@ -1273,7 +1328,7 @@ session_start();
         else:
 
           $name=htmlspecialchars($_POST["name"]);
-          $content=htmlspecialchars($_POST["content"]);
+          $content=$_POST["content"];
 
           if($title=="" && $content=="") :
 
@@ -1332,7 +1387,18 @@ session_start();
             Content
           </div>
           <div class="col-lg-12 border-top p-2">
-          <textarea name="content" rows="5" class="form-control">'.$kayitbilgi["content"].'</textarea>
+          <textarea name="content" rows="5" class="form-control" id="editor7">'.$kayitbilgi["content"].'</textarea>'; ?>
+
+          <script>
+          ClassicEditor
+              .create( document.querySelector( '#editor7' ) )
+              .catch( error => {
+                  console.error( error );
+              } );
+          </script>
+          
+          <?php
+          echo '
           </div>
 
           <div class="col-lg-12 border-top p-2">
@@ -1348,7 +1414,7 @@ session_start();
         else:
 
           $name=htmlspecialchars($_POST["name"]);
-          $content=htmlspecialchars($_POST["content"]);
+          $content=$_POST["content"];
           $kayitidsi=htmlspecialchars($_POST["kayitid"]);
 
           if($name=="" && $content=="") :
@@ -2242,6 +2308,72 @@ session_start();
 
 
       }
+
+      //----------------Tasarım Tercih Ayarları Bölümü-----------------
+      function istatistikbar ($db) {
+		
+		
+        echo '<div class="row w-100">
+    
+    
+              <div class="col-lg-3 col-md-6  mt-2">
+                <div class="card text-center border border-dark" >
+                  <div class="card-body">
+                    <h5 class="card-title  p-2 bg-dark text-white "> Intro</h5>	
+                    <p class="card-text"><h3><kbd class="text-warning">'; 
+                    echo $this->sorgula($db,"select * from intro",2)->rowCount();
+                    echo '</kbd></h3></p>   
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-lg-3 col-md-6  mt-2">
+                <div class="card text-center border border-dark" >
+                  <div class="card-body">
+                    <h5 class="card-title  p-2 bg-dark text-white "> Hedefler</h5>	
+                    <p class="card-text"><h3><kbd class="text-warning">'; 
+                    echo $this->sorgula($db,"select * from ourworks",2)->rowCount();
+                    echo '</kbd></h3></p>   
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6  mt-2">
+                <div class="card text-center border border-dark" >
+                  <div class="card-body">
+                    <h5 class="card-title  p-2 bg-dark text-white "> Yorumlar</h5>	
+                    <p class="card-text"><h3><kbd class="text-warning">'; 
+                    echo $this->sorgula($db,"select * from comment",2)->rowCount();
+                    echo '</kbd></h3></p>   
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6  mt-2">
+                <div class="card text-center border border-dark" >
+                  <div class="card-body">
+                    <h5 class="card-title  p-2 bg-dark text-white "> Referanslar</h5>	
+                    <p class="card-text"><h3><kbd class="text-warning">'; 
+                    echo $this->sorgula($db,"select * from referanslar",2)->rowCount();
+                    echo '</kbd></h3></p>   
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6  mt-2">
+                <div class="card text-center border border-dark" >
+                  <div class="card-body">
+                    <h5 class="card-title  p-2 bg-dark text-white "> Mail</h5>	
+                    <p class="card-text"><h3><kbd class="text-warning">'; 
+                    echo $this->sorgula($db,"select * from incomingmail",2)->rowCount();
+                    echo '</kbd></h3></p>   
+                  </div>
+                </div>
+              </div>
+
+        </div>';
+          
+        }
 
 
   }

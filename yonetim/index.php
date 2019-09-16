@@ -89,6 +89,7 @@ $yonetim->kontrolet("ind");
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/scripts.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
 </body>
 
 </html>

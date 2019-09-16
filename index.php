@@ -33,6 +33,7 @@ $tasarim= new tasarim;
   <script src="lib/magnific-popup/magnific-popup.min.js"></script>
   <script src="lib/sticky/sticky.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
 
 
 
