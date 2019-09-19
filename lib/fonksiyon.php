@@ -49,7 +49,7 @@ class kurumsal{
     $this->worktitle=$queryend["worktitle"];
     $this->haritabilgi=$queryend["haritabilgi"];
     $this->footer=$queryend["footer"];
-    
+    @$this->url=$queryend["url"];
 
  
   }

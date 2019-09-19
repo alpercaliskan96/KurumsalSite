@@ -60,17 +60,49 @@ $tasarim= new tasarim;
 
     $("#gonderbtn").click(function() {
 
-      $.ajax({
-        type:"POST",
-        url:'lib/mail/gonder.php',
-        data:$('#mailform').serialize(),
-        success: function(cevap) {
-        $('#mailform').trigger("reset");
-        $('#formtutucu').fadeOut(500);
-        $('#mesajsonuc').html(cevap);
+      var error = false;
 
-        },
+      var form = $("#mailform").find('.form-group');
+      form.children('input').each(function(){
+        var i = $(this);
+        i.css("border-color","");
+
+        if(i.val() == ""){
+          i.css("border-color","red");
+          $('#mesajsonuc').text("Lütfen tüm alanları doldurunuz..");
+          error = true;
+        }
+
+        else{
+          error = false;
+          $('#mesajsonuc').text("");
+        }
       });
+
+      if(form.children('textarea').val() == ""){
+          form.children('textarea').css("border-color","red");
+          $('#mesajsonuc').text("Lütfen tüm alanları doldurunuz..");
+          error = true;
+        }
+
+        else{
+          $('#mesajsonuc').text("");
+        }
+
+        if(!error){
+
+        $.ajax({
+          type:"POST",
+          url:'<?php echo $sinif->url; ?>lib/mail/gonder.php',
+          data:$('#mailform').serialize(),
+          success: function(cevap) {
+          $('#mailform').trigger("reset");
+          $('#formtutucu').fadeOut(500);
+          $('#mesajsonuc').html(cevap);
+
+            },
+          });
+        }
 
     });
 
@@ -237,7 +269,32 @@ $tasarim= new tasarim;
         <textarea class="form-control" name="mesaj" placeholder="Message" rows="5"></textarea>
         </div>
 
-        <div class="text-center"><input type="button" value="SEND" id="gonderbtn" class="btn btn-info" /></div>
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+
+            <div class="form-row">
+              
+              <div class="form-group col-md-3">
+                <img src="<?php echo $sinif ->url; ?>/kurumsalsite/captcha.php"/>
+              </div>
+            
+              <div class="form-group col-md-9">
+                <input type="text" name="guvenlik" class="form-control" placeholder="Enter security code" required="required" />
+              </div>
+            </div>
+            </div>
+          
+          
+          <div class="form-group col-md-6">
+            <div class="text-center">
+              <input type="button" value="SEND" id="gonderbtn" class="btn btn-info" />
+            </div>
+          </div>
+        
+        
+
+        
 
         
         </form>
@@ -246,6 +303,7 @@ $tasarim= new tasarim;
     </div>
 </section>
 </main>
+
 
 <!-- Footer -->
 

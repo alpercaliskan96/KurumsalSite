@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
 
@@ -41,6 +41,13 @@
     $mail=htmlspecialchars(strip_tags($_POST["mail"]));
     $konu=htmlspecialchars(strip_tags($_POST["konu"]));
     $mesaj=htmlspecialchars(strip_tags($_POST["mesaj"]));
+    $guvenlik=htmlspecialchars(strip_tags($_POST["guvenlik"]));
+
+    if($guvenlik != $_SESSION["kod"]) : 
+
+      echo '<div class="alert alert-danger text-center mx-auto">Security code is wrong.</div>';
+
+    else : 
 
     switch($tercihgeldi["mesajtercih"]) :
 
@@ -118,6 +125,7 @@
 
     endswitch;
 
+  endif; 
 
   endif;
 
