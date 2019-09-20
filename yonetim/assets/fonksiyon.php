@@ -33,6 +33,20 @@ session_start();
       endif;
       }
 
+      function sayfaNavi($baglanti , $link ,$parentText , $childText) {
+        
+	      echo '<span><a href="'.$this->UrlCek($baglanti).'/kurumsalsite/yonetim/control.php?sayfa='.$link.'">'.$parentText.'</a> / <a href="#">'.$childText.'</a></span>';
+	
+      }
+
+      function UrlCek($baglanti) {
+        $urlAl=$baglanti->prepare("select url from settings");
+        $urlAl->execute();
+        $sorguson=$urlAl->fetch();
+        return $sorguson["url"];
+        
+        } // Breadcrumb URL çekiyor
+
       //siteayarları burada yapılıyor...
       function siteayar($baglanti) {
         
@@ -626,7 +640,7 @@ session_start();
           
         else:
           ?>
-
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"introayar","İntrolar","İntro Ekle");  ?></div>
           <div class="col-lg-4 mx-auto mt-2">
             <div class="card card-bordered">
               <div class="card-body">
@@ -737,7 +751,7 @@ session_start();
           
         else:
           ?>
-
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"introayar","İntrolar","İntro Güncelle");  ?></div>
           <div class="col-lg-4 mx-auto mt-2">
             <div class="card card-bordered">
               <div class="card-body">
@@ -910,7 +924,13 @@ session_start();
       }
 
       function ourworksekle($db) {
-        echo '<div class="row text-center">
+        
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"ourworks","Hedefler","Hedef Ekle");  ?></div>
+        <?php
+
+        echo '
+        <div class="row text-center">
         <div class="col-lg-12 border-bottom"><h3 class="mt-3 text-info">ADD A NEW WORK</h3></div>';
 
         if(!$_POST):
@@ -990,6 +1010,11 @@ session_start();
       }
 
       function ourworksguncelle($db) {
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"ourworks","Hedefler","Hedef Güncelle");  ?></div>
+        <?php
+
+
         echo '<div class="row text-center">
         <div class="col-lg-12 border-bottom"><h3 class="mt-3 text-dark">UPDATE WORK</h3></div>';
 
@@ -1130,6 +1155,11 @@ session_start();
       }
 
       function referansekle($db) {
+
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"referans","Referanslar","Referans Ekle");  ?></div>
+        <?php
+
 
         echo '<div class="row text-center">
         <div class="col-lg-12">';
@@ -1279,6 +1309,11 @@ session_start();
       }
 
       function yorumekle($db) {
+
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"yorumlar","Yorumlar","Yorum Ekle");  ?></div>
+        <?php
+
         echo '<div class="row text-center">
         <div class="col-lg-12 border-bottom"><h3 class="mt-3 text-dark">YORUM EKLE</h3></div>';
 
@@ -1360,6 +1395,11 @@ session_start();
       }
 
       function yorumguncelle($db) {
+
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"yorumlar","Yorumlar","Yorum Güncelle");  ?></div>
+        <?php
+
         echo '<div class="row text-center">
         <div class="col-lg-12 border-bottom"><h3 class="mt-3 text-dark">Yorum Güncelle</h3></div>';
 
@@ -1921,6 +1961,10 @@ session_start();
 
       function kullaniciekle($db) {
 
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"kullaniciayarlar","Kullanıcılar","Kullanıcı Ekle");  ?></div>
+        <?php
+
         if($_POST):
           //database işlemleri 
 
@@ -2038,6 +2082,10 @@ session_start();
       }
 
       function kullaniciguncelle($db) {
+
+        ?>
+        <div class="col-lg-12 p-2 text-left"><?php $this-> sayfaNavi($db,"kullaniciayarlar","Kullanıcılar","Kullanıcı Güncelle");  ?></div>
+        <?php
 
         //$id=$this->coz($_SESSION["kullanicibilgi"]);
         $id = @$_GET["id"];
